@@ -127,7 +127,7 @@ export default class SvgCartesianHeatmap {
   initCanvas(options: SvgCartesianHeatmapOptions) {
     const { width, height } = options;
     const container = document.createElement('div');
-    container.className = 'li-cartesian-heatmap';
+    container.className = 'li-scatter-heatmap';
     container.style.width = `${width}px`;
     container.style.height = `${height}px`;
 

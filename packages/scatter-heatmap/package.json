@@ -1,5 +1,5 @@
 {
-  "name": "@liyucan/cartesian-heatmap",
+  "name": "@liyucan/scatter-heatmap",
   "version": "1.0.0",
   "description": "散点热力图",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint --fix --ext .ts .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx rollup -w -c",
+    "dev": "npx rollup -w -c rollup-esm.config.js",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "npx rollup -c rollup-esm.config.js",
     "build:cjs": "npx rollup -c rollup-cjs.config.js"
