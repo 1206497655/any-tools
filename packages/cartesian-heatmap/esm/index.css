@@ -1,0 +1,62 @@
+.li-cartesian-heatmap {
+  position: relative;
+}
+.li-cartesian-heatmap .coverage{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: rgba(0,0,0,0.85);
+  line-height: 22px;
+  font-weight: 400;
+}
+.li-cartesian-heatmap .tooltip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  width: 7px;
+  height: 7px;
+  background: #FFFFFF;
+  border: 1px solid rgba(20,127,250,1);
+  border-radius: 7px;
+  pointer-events: none;
+  transition: left 0.5s ease 0s, top 0.5s ease 0s;
+}
+
+.li-cartesian-heatmap .tooltip .container{
+  position: absolute;
+  padding: 0 4px;
+  background: #147FFA;
+  left: 50%;
+  top: -30px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  cursor: default;
+  pointer-events: none;
+}
+
+.li-cartesian-heatmap .tooltip .arrow{
+  position: absolute;
+  left: calc(50% - 4px);
+  bottom: -8px;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-right: 4px solid rgba(0,0,0,0);
+  border-left: 4px solid rgba(0,0,0,0);
+  border-top: 4px solid rgba(20,127,250,1);
+  border-bottom: 4px solid rgba(0,0,0,0);
+  pointer-events: none;
+}
+
+.li-cartesian-heatmap .tooltip .info{
+  height: 20px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  font-weight: 400;
+  pointer-events: none;
+}

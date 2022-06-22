@@ -1,0 +1,45 @@
+{
+  "name": "@liyucan/color-picker",
+  "version": "1.0.1",
+  "description": "颜色选择器",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "scripts": {
+    "lint": "eslint --fix --ext .ts .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx rollup -w -c rollup-esm.config.js",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "npx rollup -c rollup-esm.config.js",
+    "build:cjs": "npx rollup -c rollup-cjs.config.js"
+  },
+  "contributors": [
+    "liyucan"
+  ],
+  "maintainers": [
+    "liyucan"
+  ],
+  "author": "liyucan",
+  "license": "ISC",
+  "dependencies": {
+    "tinycolor2": "^1.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1206497655/color-picker.git"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "^8.16.0",
+    "rollup": "^2.75.3",
+    "rollup-plugin-cleandir": "^2.0.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-html": "^0.2.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.2"
+  }
+}

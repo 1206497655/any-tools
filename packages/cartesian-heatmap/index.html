@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./lib/index.css" rel="stylesheet"/>
+    <style>
+        #app {
+            /* width: 240px;
+            height: 240px; */
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <button onclick="handleOnclick()">更新数据</button>
+    <script>
+        const handleOnclick = () => {
+            instance.update({
+                xAxis: [800, 2000],
+                yAxis: [1000, 1800],
+                xGrad: 20,
+                yGrad: 20,
+                data: [[1000, 1699], [1100, 1299 ], [1050, 1058 ], [1154, 1308 ], [1287, 1750 ], [1587, 1205 ], [1708, 1000 ], [1408, 1800 ], [1478, 1305 ], [1122, 1648]]
+            })
+        }
+    </script>
+    <script type="module">
+        import SvgColorPicker from './lib/index.js';
+        const instance = new SvgColorPicker({
+            width: 320,
+            height: 320,
+            xAxis: [1000, 1800],
+            yAxis: [1000, 1800],
+            xGrad: 20,
+            yGrad: 20,
+            data: [[1000, 1699], [1100, 1299 ], [1050, 1058 ], [1154, 1308 ], [1287, 1750 ], [1587, 1205 ], [1708, 1000 ], [1408, 1800 ], [1478, 1305 ], [1122, 1648]]
+        });
+        instance.mount('#app');
+
+        window.instance = instance;
+    </script>
+</body>
+</html>

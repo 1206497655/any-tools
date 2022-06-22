@@ -1,0 +1,111 @@
+<div class="li-color-picker">
+    <!-- 颜色控制区 -->
+    <div class="color-control">
+        <!-- 颜色选择区 -->
+        <div class="color-move">
+            <canvas class="color-canvas"></canvas>
+            <div class="move"></div>
+        </div>
+        
+        <!-- 选择 -->
+        <div class="color-handler">
+            <div class="left">
+                <!-- 色相选择 -->
+                <div class="color-hue">
+                    <div class="outside-slide">
+                        <div class="inside-slide"></div>
+                    </div>
+                </div>
+
+                <!-- 透明度 -->
+                <div class="color-opacity">
+                    <div class="color-opacity-show"></div>
+                    <div class="outside-slide">
+                        <div class="inside-slide"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <!-- 颜色显示 -->
+                <div class="color-show"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="color-form-top">
+         <!-- HEX -->
+        <div class="color-hex input-item">
+            <div class="input-wrap">
+                <i class="input-label-hex">#</i>
+                <input data-color-type="HEX" type="text" class="color-hex-input input" style="padding-left: 0;"/>
+            </div>
+            <p class="input-name">Hex</p>
+        </div>
+
+        <!-- RGB -->
+        <div class="color-rgb-r input-item">
+            <div class="input-wrap">
+                <input data-color-type="RGB_R" class="color-rgb-r-input input" />
+                <div class="arrow-wrap r-arrow-wrap">
+                    <img src="../assets/arrow.png" draggable="false" class="arrow arrow-up" data-color-type="RGB_R"/>
+                    <img src="../assets/arrow.png" draggable="false" class="arrow arrow-down" data-color-type="RGB_R"/>
+                </div>
+            </div>
+            <p class="input-name">R</p>
+        </div>
+        <div class="color-rgb-g input-item">
+            <div class="input-wrap">
+                <input data-color-type="RGB_G" class="color-rgb-g-input input" />
+                <div class="arrow-wrap g-arrow-wrap">
+                    <img src="../assets/arrow.png" draggable="false" class="arrow arrow-up" data-color-type="RGB_G"/>
+                    <img src="../assets/arrow.png" draggable="false" class="arrow arrow-down" data-color-type="RGB_G"/>
+                </div>
+            </div>
+            <p class="input-name">G</p>
+        </div>
+        <div class="color-rgb-b input-item" style="margin-right: 0;">
+            <div class="input-wrap">
+                <input data-color-type="RGB_B" class="color-rgb-b-input input"/>
+                <div class="arrow-wrap b-arrow-wrap">
+                    <img src="../assets/arrow.png" draggable="false" class="arrow arrow-up" data-color-type="RGB_B"/>
+                    <img src="../assets/arrow.png" draggable="false" class="arrow arrow-down" data-color-type="RGB_B"/>
+                </div>
+            </div>
+            <p class="input-name">B</p>
+        </div>
+    </div>
+
+    <div class="color-form-bottom">
+        <!-- CMYK -->
+       <div class="color-cmyk-c input-item">
+            <div class="input-wrap">
+                <input data-color-type="CMYK_C" class="color-cmyk-c-input input" />
+                <i class="input-label-cmyk">%</i>
+            </div>
+            <p class="input-name">C</p>
+       </div>
+       <div class="color-cmyk-m input-item">
+            <div class="input-wrap">
+                <input data-color-type="CMYK_M" class="color-cmyk-m-input input" />
+                <i class="input-label-cmyk">%</i>
+            </div>
+           <p class="input-name">M</p>
+       </div>
+       <div class="color-cmyk-y input-item">
+            <div class="input-wrap">
+                <input data-color-type="CMYK_Y" class="color-cmyk-y-input input" />
+                <i class="input-label-cmyk">%</i>
+            </div>
+            <p class="input-name">Y</p>
+       </div>
+       <div class="color-cmyk-k input-item" style="margin-right: 0;">
+            <div class="input-wrap">
+                <input data-color-type="CMYK_K" class="color-cmyk-k-input input"/>
+                <i class="input-label-cmyk">%</i>
+            </div>
+            <p class="input-name">K</p>
+       </div>
+   </div>
+   
+</div>

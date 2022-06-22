@@ -1,0 +1,221 @@
+/* 整体容器 */
+.svg-color-picker {
+    width: 284px;
+    font-size: 0;
+    background: white;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+/* 整体容器 */
+.svg-color-picker-large {
+    width: 300px;
+}
+
+/* 下半部分  左侧颜色选择区域 */
+.svg-color-picker .color-move{
+    width: 100%;
+    height: 160px;
+    position:relative;
+    border-radius: 2px;
+}
+
+.svg-color-picker .color-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* 小圆球 */
+.svg-color-picker .color-move .move{
+    width: 10px;
+    height: 10px;
+    border:solid 2px #fff;
+    position:absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.svg-color-picker .color-handler {
+    display: flex;
+    margin-top: 11px;
+}
+
+.svg-color-picker .left {
+    width: 79%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.svg-color-picker .right {
+    flex: 1;
+    margin-left: 14px;
+}
+
+/* 右侧的色相选择 */
+.svg-color-picker .color-hue{
+    position:relative;
+    width: 100%;
+    height: 10px;
+    border-radius: 5.5px;
+    background:linear-gradient(to right, 
+        hsl(0, 100%, 50%) ,
+        hsl(60, 100%, 50%),
+        hsl(120, 100%, 50%),
+        hsl(180, 100%, 50%),
+        hsl(240, 100%, 50%),
+        hsl(300, 100%, 50%),
+        hsl(360, 100%, 50%)
+    );
+}
+
+/* 中间的透明度选择 */
+.svg-color-picker .color-opacity{
+    position:relative;
+    width: 100%;
+    height: 10px;
+    margin-top: 11px;
+    background: var(--bg);
+    background-size: 10px 10px;
+    border-radius: 5.5px;
+    background-position: 0 0, 5px 5px;
+}
+
+/* 中间的透明度显示 */
+.svg-color-picker .color-opacity .color-opacity-show{
+    width: 100%;
+    height: 100%;
+    /* background: var(--color); */
+    border-radius: 5.5px;
+    background:linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+/* 上半部分 颜色显示 */
+.svg-color-picker .color-show {
+    width: 100%;
+    height: 100%;
+    min-height: 21px;
+    background: var(--color);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+}
+
+
+.svg-color-picker .outside-slide{
+    position:absolute;
+    left: -2px;
+    top: -2px;
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-color-picker .inside-slide {
+    position:absolute;
+    width: 9px;
+    height: 9px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,1);
+    border-radius: 12px;
+}
+
+.svg-color-picker .color-form-top {
+    margin-top: 20px;
+    display: flex;
+}
+
+.svg-color-picker .color-form-bottom {
+    margin-top: 16px;
+    display: flex;
+}
+
+.svg-color-picker .input-item {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+    flex-direction: column;
+    flex: 1;
+}
+
+.svg-color-picker .input-wrap {
+    border: 1px solid rgba(217,217,217,1);
+    border-radius: 2px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.svg-color-picker .input-wrap:focus {
+    border: 1px solid #147FFA;
+}
+
+.svg-color-picker .input-wrap .input-label-hex{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #26262640;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.svg-color-picker .input-wrap .input-label-cmyk{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #26262640;
+    font-weight: 400;
+    margin-right: 4px;
+}
+
+.svg-color-picker .input-item .input {
+    width: 100%;
+    height: 22px;
+    border: none;
+    opacity: 0.85;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #000000;
+    line-height: 20px;
+    font-weight: 400;
+    outline: none;
+    padding-left: 8px;
+}
+
+.svg-color-picker .input-name {
+    opacity: 0.65;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: rgba(0,0,0,0.85);
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.svg-color-picker .color-rgb {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.svg-color-picker .color-hex {
+    min-width: 60px;
+}
+
+.svg-color-picker .arrow-wrap {
+    
+}
+
+.svg-color-picker .arrow-wrap .arrow {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.svg-color-picker .arrow-wrap .arrow-down {
+    transform: rotate(180deg);
+}

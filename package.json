@@ -1,0 +1,26 @@
+{
+  "name": "new-bee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "contributors": [
+    "liyucan"
+  ],
+  "maintainers": [
+    "liyucan"
+  ],
+  "author": "liyucan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1206497655/new-bee.git"
+  },
+  "devDependencies": {
+    "@babel/code-frame": "^7.16.7",
+    "@changesets/cli": "^2.23.0"
+  }
+}
