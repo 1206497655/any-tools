@@ -12,6 +12,8 @@ interface SvgCartesianHeatmapOptions {
     xGrad: number;
     yGrad: number;
     data: Point[];
+    disableZoom?: boolean;
+    disableTooltip?: boolean;
     padding?: number;
     startValidator?: (targetPoint: Point, startPoint: Point) => boolean;
     endValidator?: (targetPoint: Point, endPoint: Point) => boolean;

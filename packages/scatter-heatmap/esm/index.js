@@ -7,6 +7,8 @@ const defaultOptions = {
     yGrad: 100,
     padding: 40,
     data: [],
+    disableZoom: false,
+    disableTooltip: false,
     startValidator: (targetPoint, startPoint) => {
         return targetPoint[0] >= startPoint[0] && targetPoint[1] >= startPoint[1];
     },
@@ -103,7 +105,7 @@ class SvgCartesianHeatmap {
     initCanvas(options) {
         const { width, height } = options;
         const container = document.createElement('div');
-        container.className = 'li-cartesian-heatmap';
+        container.className = 'li-scatter-heatmap';
         container.style.width = `${width}px`;
         container.style.height = `${height}px`;
         const canvas = document.createElement('canvas');
@@ -111,7 +113,9 @@ class SvgCartesianHeatmap {
         canvas.width = width;
         canvas.height = height;
         canvas.onmousemove = this.handleMousemove.bind(this);
-        canvas.onwheel = this.handleWheel.bind(this);
+        if (!this.options.disableZoom) {
+            canvas.onwheel = this.handleWheel.bind(this);
+        }
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         container.appendChild(canvas);
@@ -189,7 +193,7 @@ class SvgCartesianHeatmap {
         else {
             this.cursorPoint = [Math.ceil(point[0] / xGridSize), Math.ceil(point[1] / yGridSize)];
             const { offsetWidth } = this.tooltip;
-            this.showTooltip(this.cursorPoint, padding - offsetWidth / 2);
+            !this.options.disableTooltip && this.showTooltip(this.cursorPoint, padding - offsetWidth / 2);
         }
     }
     /**

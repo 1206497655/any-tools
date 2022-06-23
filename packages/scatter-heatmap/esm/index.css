@@ -1,7 +1,7 @@
-.li-cartesian-heatmap {
+.li-scatter-heatmap {
   position: relative;
 }
-.li-cartesian-heatmap .coverage{
+.li-scatter-heatmap .coverage{
   position: absolute;
   right: 0;
   top: 0;
@@ -11,7 +11,7 @@
   line-height: 22px;
   font-weight: 400;
 }
-.li-cartesian-heatmap .tooltip {
+.li-scatter-heatmap .tooltip {
   position: absolute;
   left: 0;
   top: 0;
@@ -25,7 +25,7 @@
   transition: left 0.5s ease 0s, top 0.5s ease 0s;
 }
 
-.li-cartesian-heatmap .tooltip .container{
+.li-scatter-heatmap .tooltip .container{
   position: absolute;
   padding: 0 4px;
   background: #147FFA;
@@ -37,7 +37,7 @@
   pointer-events: none;
 }
 
-.li-cartesian-heatmap .tooltip .arrow{
+.li-scatter-heatmap .tooltip .arrow{
   position: absolute;
   left: calc(50% - 4px);
   bottom: -8px;
@@ -51,7 +51,7 @@
   pointer-events: none;
 }
 
-.li-cartesian-heatmap .tooltip .info{
+.li-scatter-heatmap .tooltip .info{
   height: 20px;
   font-family: PingFangSC-Regular;
   font-size: 14px;

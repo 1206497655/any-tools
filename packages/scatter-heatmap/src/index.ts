@@ -16,6 +16,8 @@ interface SvgCartesianHeatmapOptions {
   xGrad: number;
   yGrad: number;
   data: Point[];
+  disableZoom?: boolean;
+  disableTooltip?: boolean;
   padding?: number; // 内边距
   startValidator?: (targetPoint: Point, startPoint: Point) => boolean; // 开始坐标与目标坐标的位置判断
   endValidator?: (targetPoint: Point, endPoint: Point) => boolean; // 结束坐标与目标坐标的位置判断
@@ -30,6 +32,8 @@ const defaultOptions: SvgCartesianHeatmapOptions = {
   yGrad: 100,
   padding: 40,
   data: [], // 坐标点数据
+  disableZoom: false,
+  disableTooltip: false,
   startValidator: (targetPoint: Point, startPoint: Point) => {
     return targetPoint[0] >= startPoint[0] && targetPoint[1] >= startPoint[1];
   },
@@ -138,7 +142,10 @@ export default class SvgCartesianHeatmap {
     canvas.height = height;
 
     canvas.onmousemove = this.handleMousemove.bind(this);
-    canvas.onwheel = this.handleWheel.bind(this);
+
+    if(!this.options.disableZoom) {
+      canvas.onwheel = this.handleWheel.bind(this);
+    }
 
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
@@ -220,7 +227,7 @@ export default class SvgCartesianHeatmap {
     } else {
       this.cursorPoint = [Math.ceil(point[0] / xGridSize), Math.ceil(point[1] / yGridSize)];
       const { offsetWidth } = this.tooltip as HTMLDivElement;
-      this.showTooltip(this.cursorPoint, padding - offsetWidth / 2);
+      !this.options.disableTooltip && this.showTooltip(this.cursorPoint, padding - offsetWidth / 2);
     }
   }
   /**
