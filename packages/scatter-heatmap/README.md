@@ -45,6 +45,13 @@ instance.mount('#app');
 | padding  | 内边距，单位px | number | 40 |
 | data  | 值数据 | [number, number][] |  |
 
+#### api
+
+|  名称   | 说明  |  参数  |  默认值  |
+|  ----  | ----  |  ----  | ----  |
+| mount  | 挂载示例 | string / HTMLElement  |  |
+| update  | 更新数据 | {<br>&nbsp;&nbsp;xAxis?: [number, number];<br>&nbsp;&nbsp;yAxis?: [number, number];<br>&nbsp;&nbsp;xGrad?: number;<br>&nbsp;&nbsp;yGrad?: number;<br>&nbsp;&nbsp;data?: [number, number][];<br>}  |  |
+
 ### 开发
 
 ```shell
