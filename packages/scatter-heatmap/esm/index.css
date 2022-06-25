@@ -16,25 +16,32 @@
   left: 0;
   top: 0;
   display: none;
-  width: 7px;
-  height: 7px;
-  background: #FFFFFF;
-  border: 1px solid rgba(20,127,250,1);
-  border-radius: 7px;
+  width: 0;
+  height: 0;
+  background: #000000;
   pointer-events: none;
-  transition: left 0.5s ease 0s, top 0.5s ease 0s;
+  transition: left 0.5s ease 0s, top 0.5s ease 0s,opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1) 0s, visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1) 0s, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s;
 }
 
 .li-scatter-heatmap .tooltip .container{
   position: absolute;
-  padding: 0 4px;
-  background: #147FFA;
+  padding: 10px;
+  background: #00000080;
   left: 50%;
-  top: -30px;
+  top: -9px;
   border-radius: 2px;
-  transform: translateX(-50%);
+  transform: translate(-50%, -100%);
   cursor: default;
   pointer-events: none;
+  color: #fff;
+}
+
+.li-scatter-heatmap .tooltip .container .start-wrap, .li-scatter-heatmap .tooltip .container .end-wrap{
+  display: flex;
+}
+
+.li-scatter-heatmap .tooltip .container .start-tip, .li-scatter-heatmap .tooltip .container .end-tip{
+  width: 45px;
 }
 
 .li-scatter-heatmap .tooltip .arrow{
@@ -44,10 +51,10 @@
   width: 0;
   height: 0;
   background: transparent;
-  border-right: 4px solid rgba(0,0,0,0);
-  border-left: 4px solid rgba(0,0,0,0);
-  border-top: 4px solid rgba(20,127,250,1);
-  border-bottom: 4px solid rgba(0,0,0,0);
+  border-right: 4px solid #00000000;
+  border-left: 4px solid #00000000;
+  border-top: 4px solid #00000080;
+  border-bottom: 4px solid #00000000;
   pointer-events: none;
 }
 

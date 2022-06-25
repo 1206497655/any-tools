@@ -61,6 +61,9 @@ Space.set(M, 5);
 Space.set(S, 10);
 Space.set(XS, 14);
 
+// 热力值颜色区
+const colors = ['#f0d99c', '#eac392', '#e4ae87', '#de987d', '#d88273', '#d3766b', '#ce6963', '#c95d5c', '#c45054', '#bf444c'];
+
 /**
  * 获取显示区间间隔值
  * @param length
@@ -76,28 +79,32 @@ const getSpace = (length: number) => {
 };
 
 /**
- * 二维数组去重
+ * 二维数组去重以及重复次数计算
  * @param source
  * @returns
  */
-const filterArray = (source: [number, number][]) => {
-  const newArray: [number, number][] = [];
+const filterAndWeight = (source: [number, number][]) => {
+  const uniqueArray: [number, number][] = [];
+  const weightMap: Map<string, number> = new Map();
   source.forEach(currentValue => {
     let isPush = true;
-    newArray.forEach(currentValueIn => {
+    let weight = 1;
+    uniqueArray.forEach(currentValueIn => {
       if (currentValueIn) {
         if (currentValue[0] === currentValueIn[0] && currentValue[1] === currentValueIn[1]) {
           isPush = false;
+          weight += 1;
         }
       } else {
-        newArray.push(currentValue);
+        uniqueArray.push(currentValue);
       }
     });
     if (isPush) {
-      newArray.push(currentValue);
+      uniqueArray.push(currentValue);
     }
+    weightMap.set(currentValue.toString(), weight);
   });
-  return newArray;
+  return { uniqueArray,  weightMap };
 };
 
 export default class SvgCartesianHeatmap {
@@ -105,7 +112,8 @@ export default class SvgCartesianHeatmap {
 
   container: HTMLDivElement | null = null;
   tooltip: HTMLDivElement | null = null;
-  tooltipText: HTMLSpanElement | null = null;
+  tooltipEndText: HTMLSpanElement | null = null;
+  tooltipStartText: HTMLSpanElement | null = null;
   coverage: HTMLDivElement | null = null;
   canvas: HTMLCanvasElement | null = null;
   ctx: CanvasRenderingContext2D | null = null;
@@ -172,11 +180,12 @@ export default class SvgCartesianHeatmap {
   initTooltip(options: SvgCartesianHeatmapOptions) {
     if (!this.container) return;
     const div = document.createElement('div');
-    div.innerHTML = `<div class="tooltip"><div class="container"><span class="info"></span><div class="arrow"></div></div></div>`;
+    div.innerHTML = `<div class="tooltip"><div class="container"><div class="start-wrap"><span class="start-tip">左上: </span><span class="start-info"></span></div><div class="end-wrap"><span class="end-tip">右下: </span><span class="end-info"></span></div><div class="arrow"></div></div></div>`;
     this.tooltip = div.children[0] as HTMLDivElement;
-    this.tooltipText = this.tooltip.children[0].children[0] as HTMLSpanElement;
-
+    this.tooltipStartText = this.tooltip.querySelector('.start-info') as HTMLSpanElement;
+    this.tooltipEndText = this.tooltip.querySelector('.end-info') as HTMLSpanElement;
     this.container.appendChild(this.tooltip);
+  
   }
   /**
    * 展示tooltip以及坐标信息
@@ -185,11 +194,12 @@ export default class SvgCartesianHeatmap {
    * @returns
    */
   showTooltip(point: Point, offset: number) {
-    if (!this.tooltip || !this.tooltipText) return;
+    if (!this.tooltip || !this.tooltipEndText || !this.tooltipStartText) return;
         this.tooltip.style.display = 'block';
-        this.tooltip.style.left = `${point[0] * this.xGridSize + offset}px`;
-        this.tooltip.style.top = `${point[1] * this.yGridSize + offset}px`;
-        this.tooltipText.innerHTML = `${this.newXAxis[point[0]]}*${this.newYAxis[point[1]]}`;
+        this.tooltip.style.left = `${point[0] * this.xGridSize - this.xGridSize / 2 + offset}px`;
+        this.tooltip.style.top = `${point[1] * this.yGridSize - this.yGridSize + offset}px`;
+        this.tooltipStartText.innerHTML = `${this.newXAxis[point[0] - 1]}*${this.newYAxis[point[1] - 1]}`;
+        this.tooltipEndText.innerHTML = `${this.newXAxis[point[0]]}*${this.newYAxis[point[1]]}`;
   }
   /**
    * 隐藏tooltip
@@ -227,6 +237,7 @@ export default class SvgCartesianHeatmap {
     } else {
       this.cursorPoint = [Math.ceil(point[0] / xGridSize), Math.ceil(point[1] / yGridSize)];
       const { offsetWidth } = this.tooltip as HTMLDivElement;
+      // this.handleFocus(this.cursorPoint);
       !this.options.disableTooltip && this.showTooltip(this.cursorPoint, padding - offsetWidth / 2);
     }
   }
@@ -249,7 +260,6 @@ export default class SvgCartesianHeatmap {
 
     // 向上滚动，放大
     if (e.deltaY && e.deltaY < 0) {
-      console.log(xGridSize);
       const centerWidth = canvas.width - padding * 2;
       const centerHeight = canvas.height - padding * 2;
       if (xGridSize >= centerWidth || yGridSize >= centerHeight) return;
@@ -312,9 +322,10 @@ export default class SvgCartesianHeatmap {
     };
     this.ctx?.translate(padding as number, padding as number);
     this.paintAxis(axis);
-    const rect = this.getRectByPoint(axis, data);
-    this.paintRect(rect);
-    this.calcCoverage(rect);
+    const rects = this.getRectByPoint(axis, data);
+    const { uniqueArray, weightMap } = filterAndWeight(rects);
+    this.paintRect(uniqueArray, weightMap);
+    this.calcCoverage(uniqueArray);
   }
   /**
    * 清除画布
@@ -418,7 +429,7 @@ export default class SvgCartesianHeatmap {
    */
   calcCoverage(rects: Rect[]) {
     if (!this.coverage) return;
-    const target = filterArray(rects).length;
+    const target = rects.length;
     const source = (this.newXAxis.length - 1) * (this.newYAxis.length - 1);
     let res = Number(((target / source) * 100).toFixed(2));
     if (res % 1 === 0) {
@@ -431,17 +442,21 @@ export default class SvgCartesianHeatmap {
    * @param rects 矩形数据
    * @returns
    */
-  paintRect(rects: Rect[]) {
+  paintRect(rects: Rect[], weightMap: Map<string, number>) {
     const { xGridSize, yGridSize, ctx } = this;
     if (!ctx) return;
     for (let i = 0; i < rects.length; i++) {
       const rect = rects[i];
       const x = rect[0];
       const y = rect[1];
+      const weight = weightMap.get([x,y].toString()) as number
       ctx.beginPath();
+      
       ctx.moveTo(x * xGridSize, y * xGridSize);
-      ctx.fillStyle = '#E6F6FF';
+      
+      ctx.fillStyle = colors[weight];
       ctx.fillRect(x * xGridSize, y * yGridSize, xGridSize - 1, yGridSize - 1); // - 1是为了展示边框
+      ctx.fillStyle = '#000000d9';
       ctx.stroke();
     }
   }

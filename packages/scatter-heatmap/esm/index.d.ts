@@ -22,7 +22,8 @@ export default class SvgCartesianHeatmap {
     options: SvgCartesianHeatmapOptions;
     container: HTMLDivElement | null;
     tooltip: HTMLDivElement | null;
-    tooltipText: HTMLSpanElement | null;
+    tooltipEndText: HTMLSpanElement | null;
+    tooltipStartText: HTMLSpanElement | null;
     coverage: HTMLDivElement | null;
     canvas: HTMLCanvasElement | null;
     ctx: CanvasRenderingContext2D | null;
@@ -111,7 +112,7 @@ export default class SvgCartesianHeatmap {
      * @param rects 矩形数据
      * @returns
      */
-    paintRect(rects: Rect[]): void;
+    paintRect(rects: Rect[], weightMap: Map<string, number>): void;
     /**
      * 挂载示例
      * @param el 挂载节点
