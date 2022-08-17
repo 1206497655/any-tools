@@ -10,36 +10,6 @@ importers:
       '@babel/code-frame': 7.16.7
       '@changesets/cli': 2.23.0
 
-  packages/cartesian-heatmap:
-    specifiers:
-      '@rollup/plugin-commonjs': ^22.0.0
-      '@rollup/plugin-json': ^4.1.0
-      '@rollup/plugin-node-resolve': ^13.3.0
-      '@rollup/plugin-typescript': ^8.3.2
-      '@typescript-eslint/eslint-plugin': ^5.26.0
-      '@typescript-eslint/parser': ^5.26.0
-      eslint: ^8.16.0
-      rollup: ^2.75.3
-      rollup-plugin-cleandir: ^2.0.0
-      rollup-plugin-copy: ^3.4.0
-      rollup-plugin-html: ^0.2.1
-      tslib: ^2.4.0
-      typescript: ^4.7.2
-    devDependencies:
-      '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.7
-      '@rollup/plugin-json': 4.1.0_rollup@2.75.7
-      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.75.7
-      '@rollup/plugin-typescript': 8.3.3_g4qkabtmybowem44p7ts7jnbqm
-      '@typescript-eslint/eslint-plugin': 5.29.0_qqmbkyiaixvppdwswpytuf2hgm
-      '@typescript-eslint/parser': 5.29.0_b5e7v2qnwxfo6hmiq56u52mz3e
-      eslint: 8.18.0
-      rollup: 2.75.7
-      rollup-plugin-cleandir: 2.0.0_rollup@2.75.7
-      rollup-plugin-copy: 3.4.0
-      rollup-plugin-html: 0.2.1
-      tslib: 2.4.0
-      typescript: 4.7.4
-
   packages/color-picker:
     specifiers:
       '@rollup/plugin-commonjs': ^22.0.0
@@ -72,6 +42,39 @@ importers:
       rollup-plugin-html: 0.2.1
       tslib: 2.4.0
       typescript: 4.7.4
+
+  packages/scatter-heatmap:
+    specifiers:
+      '@rollup/plugin-commonjs': ^22.0.0
+      '@rollup/plugin-json': ^4.1.0
+      '@rollup/plugin-node-resolve': ^13.3.0
+      '@rollup/plugin-typescript': ^8.3.2
+      '@typescript-eslint/eslint-plugin': ^5.26.0
+      '@typescript-eslint/parser': ^5.26.0
+      eslint: ^8.16.0
+      rollup: ^2.75.3
+      rollup-plugin-cleandir: ^2.0.0
+      rollup-plugin-copy: ^3.4.0
+      rollup-plugin-html: ^0.2.1
+      tslib: ^2.4.0
+      typescript: ^4.7.2
+    devDependencies:
+      '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.7
+      '@rollup/plugin-json': 4.1.0_rollup@2.75.7
+      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.75.7
+      '@rollup/plugin-typescript': 8.3.3_g4qkabtmybowem44p7ts7jnbqm
+      '@typescript-eslint/eslint-plugin': 5.29.0_qqmbkyiaixvppdwswpytuf2hgm
+      '@typescript-eslint/parser': 5.29.0_b5e7v2qnwxfo6hmiq56u52mz3e
+      eslint: 8.18.0
+      rollup: 2.75.7
+      rollup-plugin-cleandir: 2.0.0_rollup@2.75.7
+      rollup-plugin-copy: 3.4.0
+      rollup-plugin-html: 0.2.1
+      tslib: 2.4.0
+      typescript: 4.7.4
+
+  packages/wx-open-tag:
+    specifiers: {}
 
 packages:
 

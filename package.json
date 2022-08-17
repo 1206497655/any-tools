@@ -17,7 +17,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1206497655/new-bee.git"
+    "url": "git+https://github.com/1206497655/any-tools.git"
   },
   "devDependencies": {
     "@babel/code-frame": "^7.16.7",

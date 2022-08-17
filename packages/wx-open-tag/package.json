@@ -1,0 +1,15 @@
+{
+  "name": "@liyucan/wx-open-tag",
+  "version": "1.0.0",
+  "description": "二次封装的微信开放标签",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wx-open-tag",
+    "微信开放标签"
+  ],
+  "author": "liyucan",
+  "license": "ISC"
+}
